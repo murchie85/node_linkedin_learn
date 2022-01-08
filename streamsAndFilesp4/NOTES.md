@@ -156,3 +156,27 @@ however `exec`  isn't meant to handle  `async` processes, such as:
 
 - long processes
 - processes waiting for input
+- or anything that remains open
+
+say for example the `questions.js` program that gets input from user.   
+  
+That remains open until all inputs gathered, so we would not want to run `exec` on this process.   
+  
+we would want to spawn it.  
+  
+```js
+const cp = require('child_process');
+// command, followed by args (as array)
+const questionApp = cp.spawn("node",['questions.js']);
+```  
+
+but we need to listen for event after spawn.  
+
+```js
+const cp = require('child_process');
+const questionApp = cp.spawn("node",['questions.js']);
+
+questionApp.stdout.on('data', dataEvent=>{
+    console.log(`from the question app: ${dataEvent}`);
+})
+```

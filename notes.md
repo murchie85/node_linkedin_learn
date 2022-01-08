@@ -16,3 +16,11 @@ NodeJs
 
 ` THIS MEANS NODE APPS CAN BE REPLICATED EASILY `
 
+
+
+# Asycnronous vs timing functions
+
+You can use Asyncronous and event listeners to wait 
+
+
+
